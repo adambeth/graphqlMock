@@ -34,7 +34,7 @@ scalar Date
     userId: ID!
   }
 
-  type AddressDtoInput{
+  input AddressDtoInput{
     active:Boolean
     addressLine1: String
     addressLine2: String
@@ -56,7 +56,9 @@ scalar Date
     allAddresses: [UserAddress!]!
   }
   type Mutation{
-    addUser (addressLine1: String!): UserAddress
+    addUser (addressLine1: String, 
+            addressLine2: String): UserAddress
+    addFullUser ( input: AddressDtoInput) : UserAddress
   }
 `;
 
