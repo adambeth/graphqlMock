@@ -48,7 +48,7 @@ scalar Date
     modified: Date!
     postalCode: Int!
     state: String!
-    user: Date!
+    user: String!
     userId: ID!
 
   }
