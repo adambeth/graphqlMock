@@ -8,13 +8,7 @@ const { GraphQLScalarType, Kind } = require('graphql');
 
 const typeDefs = gql`
 scalar Date
-  type Cat {
-    id: ID!
-    name: String!
-    age: Int!
-    nice: Boolean
-    starrable: String!
-  }
+
 
   type UserAddress{
     active:Boolean
@@ -36,11 +30,11 @@ scalar Date
 
   input AddressDtoInput{
     active:Boolean
-    addressLine1: String
+    addressLine1: String!
     addressLine2: String
     addressLine3: String
     addressLine4: String
-    addressType: String
+    addressType: AddressType
     city: String
     country: String
     create: Date
@@ -52,12 +46,16 @@ scalar Date
     userId: ID!
 
   }
+  enum AddressType{
+    MAIL
+    RESIDENCE
+  }
   type Query {
     allAddresses: [UserAddress!]!
   }
   type Mutation{
-    addUser (addressLine1: String, 
-            addressLine2: String): UserAddress
+    addUser (addressLine1: String): UserAddress
+    addAddressNull (addressLine1: String!): UserAddress
     addFullUser ( input: AddressDtoInput) : UserAddress
   }
 `;
