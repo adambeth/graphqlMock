@@ -16,7 +16,7 @@ scalar Date
     addressLine2: String!
     addressLine3: String
     addressLine4: String
-    addressType: String!
+    addressType: AddressType!
     city: String!
     country: String!
     create: Date!
